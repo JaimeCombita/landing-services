@@ -1,34 +1,42 @@
-import { hero } from '../styles/hero.css';
+'use client';
+
+import {
+  heroWrapper,
+  heroContent,
+  leftColumn,
+  heading,
+  subheading,
+  buttonGroup,
+  primaryButton,
+  secondaryButton,
+  trustBadge,
+} from '@/styles/sections/hero.css';
+
+import { ShieldCheckIcon } from '@heroicons/react/24/solid';
+import HeroVisual from './HeroVisual';
 
 export default function Hero() {
   return (
-    <section className="bg-[var(--background)] text-[var(--foreground)] py-32">
-      <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
-        <div>
-          <h1 className="text-5xl font-bold font-heading leading-tight">
+    <header className={heroWrapper}>
+      <div className={heroContent}>
+        <div className={leftColumn}>
+          <h1 className={heading}>
             Soluciones digitales escalables para empresas que necesitan arquitectura, desarrollo y consultoría de alto nivel
           </h1>
-          <p className="mt-6 text-lg text-neutral-medium max-w-xl">
+          <p className={subheading}>
             Más de 10 años construyendo sistemas seguros, tiendas online efectivas y soluciones tecnológicas alineadas a objetivos de negocio.
           </p>
-          <div className="mt-8 flex gap-4">
-            <button className="bg-brand-electric text-white px-8 py-3 rounded-md hover:bg-brand-cyan transition">
-              Agendar consulta
-            </button>
-            <button className="border-2 border-brand-electric text-white px-8 py-3 rounded-md hover:bg-brand-electric/20 transition">
-              Ver proyectos
-            </button>
+          <div className={buttonGroup}>
+            <button className={primaryButton}>Agendar consulta</button>
+            <button className={secondaryButton}>Ver proyectos</button>
           </div>
-          <div className="mt-6 flex items-center gap-2 text-sm text-neutral-medium">
-            <span className="inline-block w-5 h-5 bg-brand-cyan rounded-full" />
-            Experiencia en banca, fintech y soluciones empresariales
+          <div className={trustBadge}>
+            <ShieldCheckIcon width={20} height={20} />
+            <span>Experiencia en banca, fintech y soluciones empresariales</span>
           </div>
         </div>
-        <div className="relative">
-          {/* Aquí iría tu mockup visual */}
-          <div className="w-full h-80 bg-neutral-light rounded-xl shadow-strong" />
-        </div>
+        <HeroVisual />
       </div>
-    </section>
+    </header>
   );
 }
