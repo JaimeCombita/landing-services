@@ -1,21 +1,13 @@
 import { style } from '@vanilla-extract/css';
-import { vars } from '../theme.css';
 
 export const visualWrapper = style({
   display: 'flex',
-  alignItems: 'center',
   justifyContent: 'center',
-  position: 'relative',
-  width: '100%',
-  height: '100%',
+  alignItems: 'center',
 });
 
-export const imageContainer = style({
-  position: 'relative',
-  width: '100%',
-  maxWidth: '500px',
-  aspectRatio: '1 / 1',
+export const imageStyle = style({
   borderRadius: '1rem',
-  overflow: 'hidden',
-  boxShadow: vars.shadow.strong,
+  border: '2px solid rgba(255,255,255,0.1)',
+  boxShadow: '0 0 40px rgba(0,209,255,0.2)',
 });

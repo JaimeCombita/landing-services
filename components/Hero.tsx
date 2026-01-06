@@ -12,12 +12,12 @@ import {
   trustBadge,
 } from '@/styles/sections/hero.css';
 
-import { ShieldCheckIcon } from '@heroicons/react/24/solid';
+import { ShieldCheckIcon } from '@heroicons/react/24/outline';
 import HeroVisual from './HeroVisual';
 
 export default function Hero() {
   return (
-    <header className={heroWrapper}>
+    <section className={heroWrapper} id="hero">
       <div className={heroContent}>
         <div className={leftColumn}>
           <h1 className={heading}>
@@ -31,12 +31,12 @@ export default function Hero() {
             <button className={secondaryButton}>Ver proyectos</button>
           </div>
           <div className={trustBadge}>
-            <ShieldCheckIcon width={20} height={20} />
+            <ShieldCheckIcon width={18} height={18} stroke="#00D1FF" />
             <span>Experiencia en banca, fintech y soluciones empresariales</span>
           </div>
         </div>
         <HeroVisual />
       </div>
-    </header>
+    </section>
   );
 }

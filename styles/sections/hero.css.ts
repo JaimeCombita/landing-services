@@ -2,73 +2,81 @@ import { style } from '@vanilla-extract/css';
 import { vars } from '../theme.css';
 
 export const heroWrapper = style({
-  background: `linear-gradient(135deg, ${vars.color.brand.deep} 0%, #07121F 100%)`,
-  color: vars.color.white,
-  minHeight: '100vh',
-  display: 'flex',
-  alignItems: 'center',
-  padding: vars.space.xl,
-  position: 'relative',
+  width: '100%',
+  margin: '0 auto',
+  background: 'linear-gradient(135deg, #0A1A2F 0%, #0F243A 100%)',
+  paddingTop: '140px',
+  paddingBottom: '140px',
+  paddingLeft: '120px',
+  paddingRight: '120px',
+  //maxWidth: '1440px',
 });
 
 export const heroContent = style({
   display: 'grid',
   gridTemplateColumns: '1fr 1fr',
-  gap: vars.space.lg,
-  width: '100%',
-  maxWidth: '1200px',
-  margin: '0 auto',
+  gap: '60px',
+  alignItems: 'center',
 });
 
 export const leftColumn = style({
   display: 'flex',
   flexDirection: 'column',
-  justifyContent: 'center',
-  gap: vars.space.md,
+  gap: '32px',
 });
 
 export const heading = style({
   fontFamily: vars.font.heading,
-  fontSize: '3.5rem',
+  fontSize: '52px',
   fontWeight: vars.font.weight.bold,
-  lineHeight: 1.2,
+  color: '#FFFFFF',
+  lineHeight: '110%',
 });
 
 export const subheading = style({
   fontFamily: vars.font.body,
-  fontSize: '1.25rem',
+  fontSize: '20px',
   color: '#DCE3EA',
+  maxWidth: '520px',
   lineHeight: 1.6,
 });
 
 export const buttonGroup = style({
   display: 'flex',
-  gap: vars.space.md,
-  marginTop: vars.space.md,
+  gap: '16px',
 });
 
 export const primaryButton = style({
-  backgroundColor: vars.color.brand.electric,
-  color: vars.color.white,
-  padding: `${vars.space.sm} ${vars.space.md}`,
-  borderRadius: '8px',
+  width: '200px',
+  height: '56px',
+  backgroundColor: '#1E90FF',
+  color: '#FFFFFF',
+  borderRadius: '10px',
   fontWeight: vars.font.weight.medium,
+  fontFamily: vars.font.body,
+  fontSize: '16px',
+  border: 'none',
+  cursor: 'pointer',
   transition: 'background 0.3s',
   selectors: {
     '&:hover': {
-      backgroundColor: vars.color.brand.cyan,
+      backgroundColor: '#00D1FF',
     },
   },
 });
 
 export const secondaryButton = style({
+  width: '200px',
+  height: '56px',
   backgroundColor: 'transparent',
-  border: `2px solid ${vars.color.brand.electric}`,
-  color: vars.color.brand.electric,
-  padding: `${vars.space.sm} ${vars.space.md}`,
-  borderRadius: '8px',
+  color: '#1E90FF',
+  border: '2px solid #1E90FF',
+  borderRadius: '10px',
   fontWeight: vars.font.weight.medium,
-  transition: 'all 0.3s',
+  fontFamily: vars.font.body,
+  fontSize: '16px',
+  cursor: 'pointer',
+  transition: 'background 0.3s',
   selectors: {
     '&:hover': {
       backgroundColor: '#1E90FF22',
@@ -77,10 +85,10 @@ export const secondaryButton = style({
 });
 
 export const trustBadge = style({
-  marginTop: vars.space.lg,
   display: 'flex',
   alignItems: 'center',
-  gap: vars.space.sm,
-  fontSize: vars.font.size.sm,
-  color: vars.color.neutral.light,
+  gap: '8px',
+  fontFamily: vars.font.body,
+  fontSize: '14px',
+  color: 'rgba(255, 255, 255, 0.8)',
 });
