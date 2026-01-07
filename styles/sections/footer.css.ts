@@ -87,7 +87,9 @@ export const socialLink = style({
   color: '#FFFFFF',
   textDecoration: 'none',
   transition: 'all 0.3s ease',
-  display: 'inline-block',
+  display: 'flex',
+  alignItems: 'center',
+  gap: '12px',
   selectors: {
     '&:hover': {
       color: '#00D1FF',
