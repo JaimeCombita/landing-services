@@ -156,7 +156,7 @@ export const stepContent = style({
   backgroundColor: '#FFFFFF',
   borderRadius: '16px',
   padding: '32px',
-  boxShadow: '0 4px 16px rgba(0,0,0,0.08)',
+  boxShadow: '0 4px 16px rgba(0,0,0,0.06)',
   transition: 'all 0.3s ease',
   marginBottom: '40px',
   selectors: {

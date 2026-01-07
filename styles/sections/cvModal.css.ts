@@ -85,7 +85,7 @@ export const cvButton = style({
   color: '#FFFFFF',
   backgroundColor: '#1E90FF',
   padding: '16px 32px',
-  borderRadius: '12px',
+  borderRadius: '10px',
   border: 'none',
   cursor: 'pointer',
   transition: 'all 0.3s ease',
@@ -96,7 +96,7 @@ export const cvButton = style({
     '&:hover': {
       backgroundColor: '#00BFFF',
       transform: 'translateY(-2px)',
-      boxShadow: '0 8px 20px rgba(30, 144, 255, 0.3)',
+      boxShadow: '0 4px 20px rgba(30, 144, 255, 0.25)',
     },
   },
 });

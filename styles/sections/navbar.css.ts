@@ -55,7 +55,7 @@ export const navItem = style({
   cursor: 'pointer',
   padding: 0,
   textAlign: 'left',
-  width: '100%',
+  whiteSpace: 'nowrap',
   selectors: {
     '&:hover': {
       color: '#00D1FF',

@@ -55,7 +55,7 @@ export const projectsGrid = style({
 export const projectCard = style({
   backgroundColor: '#FFFFFF',
   borderRadius: '16px',
-  boxShadow: '0 4px 16px rgba(0,0,0,0.05)',
+  boxShadow: '0 4px 16px rgba(0,0,0,0.06)',
   overflow: 'hidden',
   display: 'flex',
   flexDirection: 'column',
@@ -130,7 +130,7 @@ export const ctaButton = style({
   color: '#FFFFFF',
   backgroundColor: '#1E90FF',
   padding: '12px 24px',
-  borderRadius: '8px',
+  borderRadius: '10px',
   textDecoration: 'none',
   display: 'inline-block',
   transition: 'background 0.3s',

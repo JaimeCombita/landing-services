@@ -53,11 +53,14 @@ export default function Footer() {
             <a href="https://github.com/jaimecombita" target="_blank" rel="noopener noreferrer" className={socialLink}>
               GitHub
             </a>
-            <a href="https://twitter.com/combita_jaime" target="_blank" rel="noopener noreferrer" className={socialLink}>
+            {/* <a href="https://twitter.com/combita_jaime" target="_blank" rel="noopener noreferrer" className={socialLink}>
               Twitter/X
-            </a>
+            </a> */}
             <a href="https://www.instagram.com/jaimeleonardo.combita" target="_blank" rel="noopener noreferrer" className={socialLink}>
               Instagram
+            </a>
+            <a href="https://www.tiktok.com/@jaimeleonardocombita" target="_blank" rel="noopener noreferrer" className={socialLink}>
+              TikTok
             </a>
           </div>
         </div>

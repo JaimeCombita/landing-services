@@ -45,7 +45,7 @@ export const ctaButton = style({
   padding: '18px 40px',
   borderRadius: '10px',
   textDecoration: 'none',
-  boxShadow: '0 4px 12px rgba(0, 209, 255, 0.2)',
+  boxShadow: '0 4px 20px rgba(30, 144, 255, 0.25)',
   transition: 'background 0.3s ease',
   selectors: {
     '&:hover': {

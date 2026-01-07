@@ -2,7 +2,7 @@ import { style } from '@vanilla-extract/css';
 import { vars } from '../theme.css';
 
 export const aboutSection = style({
-  backgroundColor: '#FFFFFF',
+  backgroundColor: '#F4F6F8',
   display: 'grid',
   gridTemplateColumns: '40% 60%',
   gap: '80px',

@@ -52,8 +52,8 @@ export const cardsGrid = style({
 
 export const card = style({
   backgroundColor: '#FFFFFF',
-  borderRadius: '12px',
-  boxShadow: '0 4px 16px rgba(0,0,0,0.05)',
+  borderRadius: '16px',
+  boxShadow: '0 4px 16px rgba(0,0,0,0.06)',
   padding: '32px',
   display: 'flex',
   flexDirection: 'column',

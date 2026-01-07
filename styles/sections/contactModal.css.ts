@@ -61,8 +61,8 @@ export const modalOverlay = style({
 });
 
 export const modalContent = style({
-  backgroundColor: '#FFFFFF', // ← fondo blanco limpio
-  borderRadius: '12px',
+  backgroundColor: '#FFFFFF',
+  borderRadius: '16px',
   padding: '40px',
   width: '100%',
   maxWidth: '600px',

@@ -63,7 +63,7 @@ export default function About({ onCVClick }: AboutProps) {
           </li>
         </ul>
         <button onClick={onCVClick} className={ctaLink}>
-          Ver experiencia completa →
+          Ver Hoja de vida / CV completo (PDF) →
         </button>
       </div>
     </section>
