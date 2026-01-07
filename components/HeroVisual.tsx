@@ -23,6 +23,7 @@ export default function HeroVisual() {
         height={600}
         className={imageStyle}
         priority
+        style={{ width: '100%', height: 'auto' }}
       />
     </div>
   );

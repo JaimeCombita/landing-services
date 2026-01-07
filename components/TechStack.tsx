@@ -28,7 +28,7 @@ const technologies = [
   { name: 'Angular', icon: '/tech/angular.png' },
   { name: 'JUnit / Mockito', icon: '/tech/testing.png' },
   { name: 'APIs REST', icon: '/tech/api.png' },
-  { name: 'Seguridad / OWASP', icon: '/tech/security.png' },
+  { name: 'Seguridad / OWASP / JWT', icon: '/tech/security.png' },
   { name: 'Inteligencia Artificial', icon: '/tech/ai.png' },
 ];
 

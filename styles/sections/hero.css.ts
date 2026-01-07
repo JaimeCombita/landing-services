@@ -9,12 +9,13 @@ export const heroWrapper = style({
   paddingBottom: '140px',
   paddingLeft: '120px',
   paddingRight: '120px',
+  overflow: 'hidden',
   '@media': {
     'screen and (max-width: 768px)': {
       paddingTop: '100px',
       paddingBottom: '60px',
-      paddingLeft: '24px',
-      paddingRight: '24px',
+      paddingLeft: '20px',
+      paddingRight: '20px',
     },
   },
 });
@@ -57,6 +58,11 @@ export const subheading = style({
   color: '#DCE3EA',
   maxWidth: '520px',
   lineHeight: 1.6,
+  '@media': {
+    'screen and (max-width: 768px)': {
+      fontSize: '16px',
+    },
+  },
 });
 
 export const buttonGroup = style({

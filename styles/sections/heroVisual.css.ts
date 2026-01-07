@@ -15,6 +15,14 @@ export const visualWrapper = style({
   justifyContent: 'center',
   alignItems: 'center',
   position: 'relative',
+  width: '100%',
+  maxWidth: '650px',
+  '@media': {
+    'screen and (max-width: 768px)': {
+      maxWidth: '100%',
+      padding: '0',
+    },
+  },
 });
 
 export const imageStyle = style({
@@ -23,6 +31,14 @@ export const imageStyle = style({
   boxShadow: '0 0 40px rgba(0,209,255,0.2)',
   animation: `${float} 6s ease-in-out infinite`,
   transition: 'all 0.4s ease',
+  maxWidth: '100%',
+  height: 'auto',
+  '@media': {
+    'screen and (max-width: 768px)': {
+      borderRadius: '0.5rem',
+      boxShadow: '0 0 20px rgba(0,209,255,0.15)',
+    },
+  },
   selectors: {
     '&:hover': {
       transform: 'scale(1.05) translateY(-10px)',
