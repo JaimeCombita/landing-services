@@ -1,4 +1,3 @@
-// styles/theme.css.ts
 import { createThemeContract, createGlobalTheme } from '@vanilla-extract/css';
 import { colors } from './tokens/colors.css';
 import { spacing } from './tokens/spacing.css';
@@ -12,7 +11,6 @@ export const vars = createThemeContract({
   shadow: shadows,
 });
 
-// Aplica los tokens globalmente
 createGlobalTheme(':root', vars, {
   color: colors,
   space: spacing,

@@ -1,4 +1,3 @@
-// styles/tokens/spacing.css.ts
 export const spacing = {
   xs: '0.5rem',
   sm: '1rem',

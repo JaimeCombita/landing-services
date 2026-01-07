@@ -3,7 +3,6 @@ import Airtable from 'airtable';
 import { NextResponse } from 'next/server';
 import { generateContactEmailHTML, generateContactEmailSubject } from '@/lib/email-templates/contact-form';
 
-// Inicialización lazy para evitar errores en build time
 const getResendClient = () => {
   if (!process.env.RESEND_API_KEY) {
     throw new Error('RESEND_API_KEY no está configurada');
@@ -23,7 +22,6 @@ export async function POST(request: Request) {
     const body = await request.json();
     const { name, email, phone, country, message } = body;
 
-    // Validación básica en el servidor
     if (!name || !email || !phone || !country || !message) {
       return NextResponse.json(
         { error: 'Todos los campos son obligatorios' },
@@ -31,7 +29,6 @@ export async function POST(request: Request) {
       );
     }
 
-    // 1. GUARDAR EN AIRTABLE (si está configurado)
     const base = getAirtableBase();
     if (base && process.env.AIRTABLE_TABLE_NAME) {
       try {
@@ -50,15 +47,13 @@ export async function POST(request: Request) {
         console.log('✅ Datos guardados en Airtable');
       } catch (airtableError) {
         console.error('❌ Error al guardar en Airtable:', airtableError);
-        // Continuar aunque falle Airtable
       }
     }
 
-    // 2. ENVIAR EMAIL CON RESEND
     const resend = getResendClient();
     const { data, error } = await resend.emails.send({
       from: 'Formulario Landing <onboarding@resend.dev>',
-      to: ['leonardo.102408@gmail.com'], // ← Cambiado a gmail.com (email verificado en Resend)
+      to: ['leonardo.102408@gmail.com'],
       subject: generateContactEmailSubject(name),
       html: generateContactEmailHTML({ name, email, phone, country, message }),
       replyTo: email,

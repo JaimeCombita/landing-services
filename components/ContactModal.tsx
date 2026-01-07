@@ -91,7 +91,6 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
   };
 
   const handleChange = (field: string, value: string) => {
-    // Para el teléfono, solo permitir números
     if (field === 'phone' && value && !/^\d*$/.test(value)) {
       return;
     }
@@ -154,7 +153,6 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
       
       setSubmitSuccess(true);
       
-      // Resetear formulario y cerrar después de 2 segundos
       setTimeout(() => {
         setFormData({
           name: '',

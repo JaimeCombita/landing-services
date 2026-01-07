@@ -1,4 +1,3 @@
-// styles/tokens/typography.css.ts
 export const font = {
   heading: 'Poppins, sans-serif',
   body: 'Inter, system-ui, sans-serif',

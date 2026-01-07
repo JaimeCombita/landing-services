@@ -1,4 +1,3 @@
-// styles/tokens/colors.css.ts
 export const colors = {
   brand: {
     deep: '#0A1A2F',
