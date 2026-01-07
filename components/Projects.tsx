@@ -27,7 +27,7 @@ export default function Projects() {
       <div className={projectsGrid}>
         <div className={projectCard}>
           <Image
-            src="/projects/shopify-mockup.jpg"
+            src="/projects/shopify-mockup.png"
             alt="Mockup Tienda Shopify"
             width={600}
             height={260}
@@ -42,7 +42,7 @@ export default function Projects() {
 
         <div className={projectCard}>
           <Image
-            src="/projects/backend-gcp.jpg"
+            src="/projects/backend-gcp.png"
             alt="Mockup Backend GCP"
             width={600}
             height={260}
@@ -57,7 +57,7 @@ export default function Projects() {
 
         <div className={projectCard}>
           <Image
-            src="/projects/banca-fintech.jpg"
+            src="/projects/banca-fintech.png"
             alt="Mockup Servicios Bancarios"
             width={600}
             height={260}
@@ -72,7 +72,7 @@ export default function Projects() {
 
         <div className={projectCard}>
           <Image
-            src="/projects/landing-demo.jpg"
+            src="/projects/landing-demo.png"
             alt="Mockup Landing Corporativa"
             width={600}
             height={260}
@@ -88,7 +88,7 @@ export default function Projects() {
 
       <div className={ctaContainer}>
         <p>¿Quieres ver más proyectos?</p>
-        <a href="#contact" className={ctaButton}>Ver portafolio completo</a>
+        {/* <a href="#contact" className={ctaButton}>Ver portafolio completo</a> */}
       </div>
     </section>
   );

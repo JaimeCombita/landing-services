@@ -7,9 +7,15 @@ export const aboutSection = style({
   gridTemplateColumns: '40% 60%',
   gap: '80px',
   padding: '120px',
-  //maxWidth: '1440px',
   margin: '0 auto',
   alignItems: 'center',
+  '@media': {
+    'screen and (max-width: 768px)': {
+      gridTemplateColumns: '1fr',
+      gap: '40px',
+      padding: '60px 24px',
+    },
+  },
 });
 
 export const leftColumn = style({
@@ -33,6 +39,11 @@ export const title = style({
   fontSize: '40px',
   fontWeight: vars.font.weight.bold,
   color: '#1A1A1A',
+  '@media': {
+    'screen and (max-width: 768px)': {
+      fontSize: '28px',
+    },
+  },
 });
 
 export const subtitle = style({
@@ -73,6 +84,11 @@ export const ctaLink = style({
   color: '#1E90FF',
   textDecoration: 'none',
   marginTop: '16px',
+  background: 'none',
+  border: 'none',
+  cursor: 'pointer',
+  padding: 0,
+  textAlign: 'left',
   selectors: {
     '&:hover': {
       textDecoration: 'underline',

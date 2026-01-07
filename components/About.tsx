@@ -16,7 +16,11 @@ import {
 import Image from 'next/image';
 import { CheckIcon } from '@heroicons/react/24/outline';
 
-export default function About() {
+interface AboutProps {
+  onCVClick: () => void;
+}
+
+export default function About({ onCVClick }: AboutProps) {
   return (
     <section className={aboutSection} id="about">
       <div className={leftColumn}>
@@ -58,9 +62,9 @@ export default function About() {
             Desarrollo web y ecommerce con integraciones reales
           </li>
         </ul>
-        <a href="#projects" className={ctaLink}>
+        <button onClick={onCVClick} className={ctaLink}>
           Ver experiencia completa →
-        </a>
+        </button>
       </div>
     </section>
   );

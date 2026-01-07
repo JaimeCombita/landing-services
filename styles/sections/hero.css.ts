@@ -9,7 +9,14 @@ export const heroWrapper = style({
   paddingBottom: '140px',
   paddingLeft: '120px',
   paddingRight: '120px',
-  //maxWidth: '1440px',
+  '@media': {
+    'screen and (max-width: 768px)': {
+      paddingTop: '100px',
+      paddingBottom: '60px',
+      paddingLeft: '24px',
+      paddingRight: '24px',
+    },
+  },
 });
 
 export const heroContent = style({
@@ -17,6 +24,12 @@ export const heroContent = style({
   gridTemplateColumns: '1fr 1fr',
   gap: '60px',
   alignItems: 'center',
+  '@media': {
+    'screen and (max-width: 768px)': {
+      gridTemplateColumns: '1fr',
+      gap: '40px',
+    },
+  },
 });
 
 export const leftColumn = style({
@@ -31,6 +44,11 @@ export const heading = style({
   fontWeight: vars.font.weight.bold,
   color: '#FFFFFF',
   lineHeight: '110%',
+  '@media': {
+    'screen and (max-width: 768px)': {
+      fontSize: '32px',
+    },
+  },
 });
 
 export const subheading = style({
@@ -44,6 +62,12 @@ export const subheading = style({
 export const buttonGroup = style({
   display: 'flex',
   gap: '16px',
+  '@media': {
+    'screen and (max-width: 768px)': {
+      flexDirection: 'column',
+      width: '100%',
+    },
+  },
 });
 
 export const primaryButton = style({
@@ -58,6 +82,11 @@ export const primaryButton = style({
   border: 'none',
   cursor: 'pointer',
   transition: 'background 0.3s',
+  '@media': {
+    'screen and (max-width: 768px)': {
+      width: '100%',
+    },
+  },
   selectors: {
     '&:hover': {
       backgroundColor: '#00D1FF',
@@ -77,6 +106,15 @@ export const secondaryButton = style({
   fontSize: '16px',
   cursor: 'pointer',
   transition: 'background 0.3s',
+  textDecoration: 'none',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  '@media': {
+    'screen and (max-width: 768px)': {
+      width: '100%',
+    },
+  },
   selectors: {
     '&:hover': {
       backgroundColor: '#1E90FF22',

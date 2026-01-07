@@ -4,12 +4,16 @@ import { vars } from '../theme.css';
 export const servicesSection = style({
   backgroundColor: '#FFFFFF',
   padding: '120px',
-  //maxWidth: '1440px',
   margin: '0 auto',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
   gap: '48px',
+  '@media': {
+    'screen and (max-width: 768px)': {
+      padding: '60px 24px',
+    },
+  },
 });
 
 export const sectionTitle = style({
@@ -18,6 +22,11 @@ export const sectionTitle = style({
   fontWeight: vars.font.weight.bold,
   color: '#1A1A1A',
   textAlign: 'center',
+  '@media': {
+    'screen and (max-width: 768px)': {
+      fontSize: '28px',
+    },
+  },
 });
 
 export const sectionSubtitle = style({
@@ -33,6 +42,12 @@ export const cardsGrid = style({
   display: 'grid',
   gridTemplateColumns: 'repeat(2, 1fr)',
   gap: '40px',
+  '@media': {
+    'screen and (max-width: 768px)': {
+      gridTemplateColumns: '1fr',
+      gap: '24px',
+    },
+  },
 });
 
 export const card = style({
@@ -43,12 +58,27 @@ export const card = style({
   display: 'flex',
   flexDirection: 'column',
   gap: '16px',
+  transition: 'all 0.3s ease',
+  cursor: 'pointer',
+  selectors: {
+    '&:hover': {
+      transform: 'translateY(-8px)',
+      boxShadow: '0 12px 32px rgba(0,0,0,0.12)',
+    },
+  },
 });
 
 export const icon = style({
   width: '48px',
   height: '48px',
   stroke: '#00D1FF',
+  transition: 'all 0.3s ease',
+  selectors: {
+    [`${card}:hover &`]: {
+      transform: 'scale(1.1) rotate(5deg)',
+      stroke: '#1E90FF',
+    },
+  },
 });
 
 export const cardTitle = style({

@@ -9,6 +9,11 @@ export const ctaFinalSection = style({
   alignItems: 'center',
   textAlign: 'center',
   gap: '32px',
+  '@media': {
+    'screen and (max-width: 768px)': {
+      padding: '80px 24px',
+    },
+  },
 });
 
 export const ctaTitle = style({
@@ -17,6 +22,11 @@ export const ctaTitle = style({
   fontWeight: vars.font.weight.bold,
   color: '#FFFFFF',
   maxWidth: '800px',
+  '@media': {
+    'screen and (max-width: 768px)': {
+      fontSize: '28px',
+    },
+  },
 });
 
 export const ctaSubtitle = style({

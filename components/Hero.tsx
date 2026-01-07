@@ -15,7 +15,11 @@ import {
 import { ShieldCheckIcon } from '@heroicons/react/24/outline';
 import HeroVisual from './HeroVisual';
 
-export default function Hero() {
+interface HeroProps {
+  onContactClick: () => void;
+}
+
+export default function Hero({ onContactClick }: HeroProps) {
   return (
     <section className={heroWrapper} id="hero">
       <div className={heroContent}>
@@ -27,8 +31,8 @@ export default function Hero() {
             Más de 10 años construyendo sistemas seguros, tiendas online efectivas y soluciones tecnológicas alineadas a objetivos de negocio.
           </p>
           <div className={buttonGroup}>
-            <button className={primaryButton}>Agendar consulta</button>
-            <button className={secondaryButton}>Ver proyectos</button>
+            <button className={primaryButton} onClick={onContactClick}>Agendar consulta</button>
+            <a href="#projects" className={secondaryButton}>Ver proyectos</a>
           </div>
           <div className={trustBadge}>
             <ShieldCheckIcon width={18} height={18} stroke="#00D1FF" />

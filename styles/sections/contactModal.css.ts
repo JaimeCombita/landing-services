@@ -38,7 +38,16 @@ export const modalContent = style({
   display: 'flex',
   flexDirection: 'column',
   gap: '24px',
+  maxHeight: '90vh',
+  overflowY: 'auto',
   position: 'relative',
+  '@media': {
+    'screen and (max-width: 768px)': {
+      padding: '32px 24px',
+      width: '95%',
+      maxHeight: '85vh',
+    },
+  },
 });
 
 export const closeButton = style({

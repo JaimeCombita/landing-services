@@ -4,11 +4,14 @@ import {
   workflowSection,
   sectionTitle,
   sectionSubtitle,
-  stepsGrid,
-  stepCard,
+  timelineContainer,
+  stepItem,
+  stepCircle,
   stepNumber,
+  stepContent,
   stepTitle,
   stepText,
+  stepLine,
 } from '@/styles/sections/workflow.css';
 
 export default function Workflow() {
@@ -41,12 +44,23 @@ export default function Workflow() {
       <p className={sectionSubtitle}>
         Un enfoque claro, estructurado y orientado a resultados en cada proyecto.
       </p>
-      <div className={stepsGrid}>
-        {steps.map((step) => (
-          <div key={step.number} className={stepCard}>
-            <div className={stepNumber}>{step.number}</div>
-            <h3 className={stepTitle}>{step.title}</h3>
-            <p className={stepText}>{step.text}</p>
+      <div className={timelineContainer}>
+        {steps.map((step, index) => (
+          <div 
+            key={step.number} 
+            className={stepItem}
+            style={{
+              animationDelay: `${index * 0.2}s`
+            }}
+          >
+            <div className={stepCircle}>
+              <span className={stepNumber}>{step.number}</span>
+            </div>
+            {index < steps.length - 1 && <div className={stepLine} />}
+            <div className={stepContent}>
+              <h3 className={stepTitle}>{step.title}</h3>
+              <p className={stepText}>{step.text}</p>
+            </div>
           </div>
         ))}
       </div>

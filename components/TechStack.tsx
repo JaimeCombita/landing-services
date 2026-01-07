@@ -13,21 +13,23 @@ import {
 import Image from 'next/image';
 
 const technologies = [
-  { name: 'Java', icon: '/tech/java.svg' },
-  { name: 'Spring Boot', icon: '/tech/spring.svg' },
-  { name: 'Docker', icon: '/tech/docker.svg' },
-  { name: 'Google Cloud', icon: '/tech/gcp.svg' },
-  { name: 'AWS', icon: '/tech/aws.svg' },
-  { name: 'Azure', icon: '/tech/azure.svg' },
-  { name: 'GitHub Actions', icon: '/tech/github.svg' },
-  { name: 'Jenkins CI/CD', icon: '/tech/jenkins.svg' },
-  { name: 'Git', icon: '/tech/git.svg' },
-  { name: 'PostgreSQL / MySQL / Oracle', icon: '/tech/databases.svg' },
-  { name: 'React', icon: '/tech/react.svg' },
-  { name: 'Angular', icon: '/tech/angular.svg' },
-  { name: 'JUnit / Mockito', icon: '/tech/testing.svg' },
-  { name: 'APIs REST', icon: '/tech/api.svg' },
-  { name: 'Seguridad / OWASP', icon: '/tech/security.svg' },
+  { name: 'Java', icon: '/tech/java.png' },
+  { name: 'Spring Boot', icon: '/tech/spring.png' },
+  { name: 'Docker', icon: '/tech/docker.png' },
+  { name: 'Google Cloud', icon: '/tech/gcp.png' },
+  { name: 'AWS', icon: '/tech/aws.png' },
+  { name: 'Azure', icon: '/tech/azure.png' },
+  { name: 'GitHub Actions', icon: '/tech/github.png' },
+  { name: 'Jenkins CI/CD', icon: '/tech/jenkins.png' },
+  { name: 'Git', icon: '/tech/git.png' },
+  { name: 'PostgreSQL / MySQL / Oracle', icon: '/tech/databases.png' },
+  { name: 'Redis', icon: '/tech/redis.png' },
+  { name: 'React', icon: '/tech/react.png' },
+  { name: 'Angular', icon: '/tech/angular.png' },
+  { name: 'JUnit / Mockito', icon: '/tech/testing.png' },
+  { name: 'APIs REST', icon: '/tech/api.png' },
+  { name: 'Seguridad / OWASP', icon: '/tech/security.png' },
+  { name: 'Inteligencia Artificial', icon: '/tech/ai.png' },
 ];
 
 export default function TechStack() {
@@ -38,8 +40,14 @@ export default function TechStack() {
         Trabajo con tecnologías modernas y estándares de ingeniería para garantizar rendimiento, seguridad y escalabilidad.
       </p>
       <div className={techGrid}>
-        {technologies.map((tech) => (
-          <div key={tech.name} className={techItem}>
+        {technologies.map((tech, index) => (
+          <div 
+            key={tech.name} 
+            className={techItem}
+            style={{
+              animationDelay: `${index * 0.05}s`
+            }}
+          >
             <Image
               src={tech.icon}
               alt={tech.name}
