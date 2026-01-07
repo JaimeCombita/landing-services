@@ -54,6 +54,8 @@ export const navItem = style({
   border: 'none',
   cursor: 'pointer',
   padding: 0,
+  textAlign: 'left',
+  width: '100%',
   selectors: {
     '&:hover': {
       color: '#00D1FF',
