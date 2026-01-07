@@ -82,9 +82,7 @@ export const metadata: Metadata = {
     maximumScale: 5,
   },
   verification: {
-    google: 'tu-codigo-de-verificacion-google',
-    // yandex: 'tu-codigo-yandex',
-    // bing: 'tu-codigo-bing',
+    google: '<meta name="google-site-verification" content="-YVFBmqpYDeWZbFn7YPybBV8cwEtiEoFaadZhRMkUKM" />',
   },
   alternates: {
     canonical: 'https://jaime-combita-landing.vercel.app/',
