@@ -6,8 +6,8 @@ const withVanillaExtract = createVanillaExtractPlugin();
 const nextConfig: NextConfig = {
   reactCompiler: true,
   reactStrictMode: true,
-  experimental: {
-    turbo: undefined,
+  webpack: (config) => {
+    return config;
   },
 };
 
