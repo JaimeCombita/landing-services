@@ -47,16 +47,16 @@ export default function Footer() {
         <div className={column}>
           <h4 className={columnTitle}>Redes Sociales</h4>
           <div className={socialLinks}>
-            <a href="https://linkedin.com/in/jaimecombita" target="_blank" rel="noopener noreferrer" className={socialLink}>
+            <a href="https://linkedin.com/in/jaimecombitavargas" target="_blank" rel="noopener noreferrer" className={socialLink}>
               LinkedIn
             </a>
             <a href="https://github.com/jaimecombita" target="_blank" rel="noopener noreferrer" className={socialLink}>
               GitHub
             </a>
-            <a href="https://twitter.com/jaimecombita" target="_blank" rel="noopener noreferrer" className={socialLink}>
+            <a href="https://twitter.com/combita_jaime" target="_blank" rel="noopener noreferrer" className={socialLink}>
               Twitter/X
             </a>
-            <a href="https://www.instagram.com/jaimecombita" target="_blank" rel="noopener noreferrer" className={socialLink}>
+            <a href="https://www.instagram.com/jaimeleonardo.combita" target="_blank" rel="noopener noreferrer" className={socialLink}>
               Instagram
             </a>
           </div>

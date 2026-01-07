@@ -1,0 +1,21 @@
+{
+  "name": "Jaime Combita - Soluciones Digitales",
+  "short_name": "JC Services",
+  "description": "Arquitectura, desarrollo y consultoría tecnológica",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#1E90FF",
+  "background_color": "#0A1A2F",
+  "display": "standalone",
+  "start_url": "/"
+}

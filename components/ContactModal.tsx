@@ -13,11 +13,22 @@ import {
   submitButton,
   title,
   subtitle,
+  errorText,
+  inputError,
+  successMessage,
 } from '../styles/sections/contactModal.css';
     
 interface ContactModalProps {
   isOpen: boolean;
   onClose: () => void;
+}
+
+interface FormErrors {
+  name?: string;
+  email?: string;
+  phone?: string;
+  country?: string;
+  message?: string;
 }
 
 export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
@@ -28,82 +39,268 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
     country: '',
     message: '',
   });
-
-  const isFormValid = Object.values(formData).every((value) => value.trim() !== '');
+  
+  const [errors, setErrors] = useState<FormErrors>({});
+  const [touched, setTouched] = useState<Record<string, boolean>>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
 
   useEffect(() => {
-    if (isOpen) document.body.style.overflow = 'hidden';
-    else document.body.style.overflow = 'auto';
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+      setIsClosing(false);
+    } else {
+      document.body.style.overflow = 'auto';
+    }
   }, [isOpen]);
 
-  if (!isOpen) return null;
+  const validateField = (name: string, value: string): string | undefined => {
+    switch (name) {
+      case 'name':
+        if (!value.trim()) return 'El nombre es obligatorio';
+        if (value.length < 10) return 'El nombre debe tener al menos 10 caracteres';
+        if (!/^[a-zA-Z0-9\s]+$/.test(value)) return 'Solo se permiten caracteres alfanuméricos';
+        break;
+      case 'email':
+        if (!value.trim()) return 'El correo es obligatorio';
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) return 'Formato de correo inválido';
+        break;
+      case 'phone':
+        if (!value.trim()) return 'El teléfono es obligatorio';
+        if (!/^\d+$/.test(value)) return 'Solo se permiten números';
+        if (value.length < 7) return 'El teléfono debe tener al menos 7 dígitos';
+        break;
+      case 'country':
+        if (!value.trim()) return 'El país es obligatorio';
+        break;
+      case 'message':
+        if (!value.trim()) return 'El mensaje es obligatorio';
+        if (value.length < 10) return 'El mensaje debe tener al menos 10 caracteres';
+        break;
+    }
+    return undefined;
+  };
+
+  const handleBlur = (field: string) => {
+    setTouched({ ...touched, [field]: true });
+    const error = validateField(field, formData[field as keyof typeof formData]);
+    setErrors({ ...errors, [field]: error });
+  };
+
+  const handleChange = (field: string, value: string) => {
+    // Para el teléfono, solo permitir números
+    if (field === 'phone' && value && !/^\d*$/.test(value)) {
+      return;
+    }
+    
+    setFormData({ ...formData, [field]: value });
+    
+    if (touched[field]) {
+      const error = validateField(field, value);
+      setErrors({ ...errors, [field]: error });
+    }
+  };
+
+  const validateForm = (): boolean => {
+    const newErrors: FormErrors = {};
+    let isValid = true;
+
+    Object.keys(formData).forEach((key) => {
+      const error = validateField(key, formData[key as keyof typeof formData]);
+      if (error) {
+        newErrors[key as keyof FormErrors] = error;
+        isValid = false;
+      }
+    });
+
+    setErrors(newErrors);
+    setTouched({
+      name: true,
+      email: true,
+      phone: true,
+      country: true,
+      message: true,
+    });
+
+    return isValid;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!validateForm()) {
+      return;
+    }
+
+    setIsSubmitting(true);
+    
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Error al enviar el mensaje');
+      }
+      
+      setSubmitSuccess(true);
+      
+      // Resetear formulario después de 2 segundos
+      setTimeout(() => {
+        handleClose();
+        setTimeout(() => {
+          setFormData({
+            name: '',
+            email: '',
+            phone: '',
+            country: '',
+            message: '',
+          });
+          setErrors({});
+          setTouched({});
+          setSubmitSuccess(false);
+        }, 300);
+      }, 2000);
+      
+    } catch (error) {
+      console.error('Error al enviar:', error);
+      alert(error instanceof Error ? error.message : 'Error al enviar el mensaje. Por favor intenta nuevamente.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleClose = () => {
+    setIsClosing(true);
+    setTimeout(() => {
+      onClose();
+    }, 300);
+  };
+
+  if (!isOpen && !isClosing) return null;
 
   return (
-    <div className={modalOverlay} onClick={onClose}>
-      <div className={modalContent} onClick={(e) => e.stopPropagation()}>
-        <button className={closeButton} onClick={onClose}>×</button>
+    <div 
+      className={modalOverlay} 
+      onClick={handleClose}
+      style={{
+        animation: isClosing ? 'fadeOut 0.3s ease-out' : 'fadeIn 0.3s ease-out'
+      }}
+    >
+      <div 
+        className={modalContent} 
+        onClick={(e) => e.stopPropagation()}
+        style={{
+          animation: isClosing ? 'slideOut 0.3s ease-out' : 'slideIn 0.3s ease-out'
+        }}
+      >
+        <button className={closeButton} onClick={handleClose}>×</button>
         <h2 className={title}>Hablemos</h2>
         <p className={subtitle}>
           ¿Tienes un proyecto en mente? Completa el formulario y me pondré en contacto contigo.
         </p>
-        <form className={form} onSubmit={(e) => e.preventDefault()}>
+        
+        {submitSuccess && (
+          <div className={successMessage}>
+            ✓ ¡Mensaje enviado con éxito! Te contactaré pronto.
+          </div>
+        )}
+        
+        <form className={form} onSubmit={handleSubmit}>
           <div className={formGroup}>
-            <label htmlFor="name" className={label}>Nombre</label>
+            <label htmlFor="name" className={label}>Nombre completo *</label>
             <input
               type="text"
               id="name"
-              className={input}
+              className={`${input} ${touched.name && errors.name ? inputError : ''}`}
               value={formData.name}
-              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-              required
+              onChange={(e) => handleChange('name', e.target.value)}
+              onBlur={() => handleBlur('name')}
+              disabled={isSubmitting}
             />
+            {touched.name && errors.name && (
+              <span className={errorText}>{errors.name}</span>
+            )}
           </div>
+          
           <div className={formGroup}>
-            <label htmlFor="email" className={label}>Correo electrónico</label>
+            <label htmlFor="email" className={label}>Correo electrónico *</label>
             <input
               type="email"
               id="email"
-              className={input}
+              className={`${input} ${touched.email && errors.email ? inputError : ''}`}
               value={formData.email}
-              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-              required
+              onChange={(e) => handleChange('email', e.target.value)}
+              onBlur={() => handleBlur('email')}
+              disabled={isSubmitting}
             />
+            {touched.email && errors.email && (
+              <span className={errorText}>{errors.email}</span>
+            )}
           </div>
+          
           <div className={formGroup}>
-            <label htmlFor="phone" className={label}>Celular</label>
+            <label htmlFor="phone" className={label}>Celular *</label>
             <input
               type="tel"
               id="phone"
-              className={input}
+              className={`${input} ${touched.phone && errors.phone ? inputError : ''}`}
               value={formData.phone}
-              onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-              required
+              onChange={(e) => handleChange('phone', e.target.value)}
+              onBlur={() => handleBlur('phone')}
+              placeholder="Ej: 3001234567"
+              disabled={isSubmitting}
             />
+            {touched.phone && errors.phone && (
+              <span className={errorText}>{errors.phone}</span>
+            )}
           </div>
+          
           <div className={formGroup}>
-            <label htmlFor="country" className={label}>País</label>
+            <label htmlFor="country" className={label}>País *</label>
             <input
               type="text"
               id="country"
-              className={input}
+              className={`${input} ${touched.country && errors.country ? inputError : ''}`}
               value={formData.country}
-              onChange={(e) => setFormData({ ...formData, country: e.target.value })}
-              required
+              onChange={(e) => handleChange('country', e.target.value)}
+              onBlur={() => handleBlur('country')}
+              disabled={isSubmitting}
             />
+            {touched.country && errors.country && (
+              <span className={errorText}>{errors.country}</span>
+            )}
           </div>
+          
           <div className={formGroup}>
-            <label htmlFor="message" className={label}>Mensaje</label>
+            <label htmlFor="message" className={label}>Mensaje *</label>
             <textarea
               id="message"
               rows={5}
-              className={textarea}
+              className={`${textarea} ${touched.message && errors.message ? inputError : ''}`}
               value={formData.message}
-              onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-              required
+              onChange={(e) => handleChange('message', e.target.value)}
+              onBlur={() => handleBlur('message')}
+              disabled={isSubmitting}
             />
+            {touched.message && errors.message && (
+              <span className={errorText}>{errors.message}</span>
+            )}
           </div>
-          <button type="submit" className={submitButton} disabled={!isFormValid}>
-            Enviar mensaje
+          
+          <button 
+            type="submit" 
+            className={submitButton} 
+            disabled={isSubmitting || submitSuccess}
+          >
+            {isSubmitting ? 'Enviando...' : submitSuccess ? '¡Enviado!' : 'Enviar mensaje'}
           </button>
         </form>
       </div>
