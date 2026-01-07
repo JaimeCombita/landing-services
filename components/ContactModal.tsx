@@ -44,15 +44,17 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
   const [touched, setTouched] = useState<Record<string, boolean>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
-  const [isClosing, setIsClosing] = useState(false);
 
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
-      setIsClosing(false);
     } else {
       document.body.style.overflow = 'auto';
     }
+    
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
   }, [isOpen]);
 
   const validateField = (name: string, value: string): string | undefined => {
@@ -152,21 +154,19 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
       
       setSubmitSuccess(true);
       
-      // Resetear formulario después de 2 segundos
+      // Resetear formulario y cerrar después de 2 segundos
       setTimeout(() => {
-        handleClose();
-        setTimeout(() => {
-          setFormData({
-            name: '',
-            email: '',
-            phone: '',
-            country: '',
-            message: '',
-          });
-          setErrors({});
-          setTouched({});
-          setSubmitSuccess(false);
-        }, 300);
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          country: '',
+          message: '',
+        });
+        setErrors({});
+        setTouched({});
+        setSubmitSuccess(false);
+        onClose();
       }, 2000);
       
     } catch (error) {
@@ -177,31 +177,16 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
     }
   };
 
-  const handleClose = () => {
-    setIsClosing(true);
-    setTimeout(() => {
-      onClose();
-    }, 300);
-  };
-
-  if (!isOpen && !isClosing) return null;
+  if (!isOpen) return null;
 
   return (
     <div 
-      className={modalOverlay} 
-      onClick={handleClose}
-      style={{
-        animation: isClosing ? 'fadeOut 0.3s ease-out' : 'fadeIn 0.3s ease-out'
-      }}
+      className={modalOverlay}
     >
       <div 
-        className={modalContent} 
-        onClick={(e) => e.stopPropagation()}
-        style={{
-          animation: isClosing ? 'slideOut 0.3s ease-out' : 'slideIn 0.3s ease-out'
-        }}
+        className={modalContent}
       >
-        <button className={closeButton} onClick={handleClose}>×</button>
+        <button className={closeButton} onClick={onClose} type="button">×</button>
         <h2 className={title}>Hablemos</h2>
         <p className={subtitle}>
           ¿Tienes un proyecto en mente? Completa el formulario y me pondré en contacto contigo.

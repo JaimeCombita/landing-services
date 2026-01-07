@@ -86,11 +86,24 @@ export const closeButton = style({
   position: 'absolute',
   top: '16px',
   right: '16px',
-  fontSize: '24px',
+  fontSize: '32px',
   background: 'none',
   border: 'none',
   color: '#999',
   cursor: 'pointer',
+  zIndex: 10,
+  width: '40px',
+  height: '40px',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  transition: 'color 0.2s ease, transform 0.2s ease',
+  selectors: {
+    '&:hover': {
+      color: '#333',
+      transform: 'scale(1.1)',
+    },
+  },
 });
 
 export const form = style({

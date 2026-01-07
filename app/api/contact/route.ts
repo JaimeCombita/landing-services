@@ -3,12 +3,20 @@ import Airtable from 'airtable';
 import { NextResponse } from 'next/server';
 import { generateContactEmailHTML, generateContactEmailSubject } from '@/lib/email-templates/contact-form';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Inicialización lazy para evitar errores en build time
+const getResendClient = () => {
+  if (!process.env.RESEND_API_KEY) {
+    throw new Error('RESEND_API_KEY no está configurada');
+  }
+  return new Resend(process.env.RESEND_API_KEY);
+};
 
-// Configurar Airtable
-const base = process.env.AIRTABLE_API_KEY 
-  ? new Airtable({ apiKey: process.env.AIRTABLE_API_KEY }).base(process.env.AIRTABLE_BASE_ID || '')
-  : null;
+const getAirtableBase = () => {
+  if (!process.env.AIRTABLE_API_KEY || !process.env.AIRTABLE_BASE_ID) {
+    return null;
+  }
+  return new Airtable({ apiKey: process.env.AIRTABLE_API_KEY }).base(process.env.AIRTABLE_BASE_ID);
+};
 
 export async function POST(request: Request) {
   try {
@@ -24,6 +32,7 @@ export async function POST(request: Request) {
     }
 
     // 1. GUARDAR EN AIRTABLE (si está configurado)
+    const base = getAirtableBase();
     if (base && process.env.AIRTABLE_TABLE_NAME) {
       try {
         await base(process.env.AIRTABLE_TABLE_NAME).create([
@@ -46,9 +55,10 @@ export async function POST(request: Request) {
     }
 
     // 2. ENVIAR EMAIL CON RESEND
+    const resend = getResendClient();
     const { data, error } = await resend.emails.send({
       from: 'Formulario Landing <onboarding@resend.dev>',
-      to: ['leonardo.102408@hotmail.com'],
+      to: ['leonardo.102408@gmail.com'], // ← Cambiado a gmail.com (email verificado en Resend)
       subject: generateContactEmailSubject(name),
       html: generateContactEmailHTML({ name, email, phone, country, message }),
       replyTo: email,
