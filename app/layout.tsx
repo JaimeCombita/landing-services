@@ -43,6 +43,7 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  metadataBase: new URL('https://jaime-combita-landing.vercel.app/'),
   openGraph: {
     type: 'website',
     locale: 'es_CO',
@@ -65,11 +66,6 @@ export const metadata: Metadata = {
     description: 'Más de 10 años construyendo sistemas seguros, tiendas online efectivas y soluciones tecnológicas.',
     images: ['/og-image.jpg'],
     creator: '@combita_jaime',
-  },
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 5,
   },
   verification: {
     google: '-YVFBmqpYDeWZbFn7YPybBV8cwEtiEoFaadZhRMkUKM',
