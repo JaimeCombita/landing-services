@@ -46,12 +46,10 @@ export default function Workflow() {
       </p>
       <div className={timelineContainer}>
         {steps.map((step, index) => (
-          <div 
-            key={step.number} 
+          <div
+            key={step.number}
             className={stepItem}
-            style={{
-              animationDelay: `${index * 0.2}s`
-            }}
+            style={{ animationDelay: `${index * 0.2}s` }}
           >
             <div className={stepCircle}>
               <span className={stepNumber}>{step.number}</span>

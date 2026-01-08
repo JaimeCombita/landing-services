@@ -1,4 +1,5 @@
 import React from 'react';
+import { createPortal } from 'react-dom';
 
 interface CustomAlertProps {
   message: React.ReactNode;
@@ -6,7 +7,7 @@ interface CustomAlertProps {
 }
 
 export default function CustomAlert({ message, onClose }: CustomAlertProps) {
-  return (
+  return createPortal(
     <div style={{
       position: 'fixed',
       top: 0,
@@ -66,6 +67,7 @@ export default function CustomAlert({ message, onClose }: CustomAlertProps) {
           Aceptar
         </button>
       </div>
-    </div>
+    </div>,
+    typeof window !== 'undefined' ? document.body : document.createElement('div')
   );
 }

@@ -145,7 +145,7 @@ export const timelineButton = style({
 export const timelineImage = style({
   width: '320px',
   height: '220px',
-  objectFit: 'cover',
+  objectFit: 'contain',
   borderRadius: '12px',
   boxShadow: '0 2px 16px rgba(0,0,0,0.10)',
   margin: '0 32px',

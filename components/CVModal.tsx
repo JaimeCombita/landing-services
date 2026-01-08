@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import {
   modalOverlay,
   modalContent,
@@ -18,8 +19,11 @@ interface CVModalProps {
 
 export default function CVModal({ isOpen, onClose }: CVModalProps) {
   useEffect(() => {
-    if (isOpen) document.body.style.overflow = 'hidden';
-    else document.body.style.overflow = 'auto';
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
   }, [isOpen]);
 
   if (!isOpen) return null;
@@ -30,7 +34,7 @@ export default function CVModal({ isOpen, onClose }: CVModalProps) {
     onClose();
   };
 
-  return (
+  return createPortal(
     <div className={modalOverlay} onClick={onClose}>
       <div className={modalContent} onClick={(e) => e.stopPropagation()}>
         <button className={closeButton} onClick={onClose}>×</button>
@@ -47,6 +51,7 @@ export default function CVModal({ isOpen, onClose }: CVModalProps) {
           </button>
         </div>
       </div>
-    </div>
+    </div>,
+    typeof window !== 'undefined' ? document.body : document.createElement('div')
   );
 }
