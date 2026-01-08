@@ -128,3 +128,25 @@ export const mobileMenu = style({
 export const mobileMenuOpen = style({
   right: '0',
 });
+
+export const mobileHomeButton = style({
+  display: 'none',
+  alignItems: 'center',
+  justifyContent: 'center',
+  padding: '8px',
+  background: 'none',
+  border: 'none',
+  cursor: 'pointer',
+  transition: 'opacity 0.3s ease',
+  textDecoration: 'none',
+  '@media': {
+    'screen and (max-width: 768px)': {
+      display: 'flex',
+    },
+  },
+  selectors: {
+    '&:hover': {
+      opacity: 0.8,
+    },
+  },
+});
