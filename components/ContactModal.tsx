@@ -17,10 +17,12 @@ import {
   inputError,
   successMessage,
 } from '../styles/sections/contactModal.css';
+import LoadingSpinner from './LoadingSpinner';
     
 interface ContactModalProps {
-  isOpen: boolean;
+  isOpen?: boolean;
   onClose: () => void;
+  serviceContext?: string;
 }
 
 interface FormErrors {
@@ -31,13 +33,13 @@ interface FormErrors {
   message?: string;
 }
 
-export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
+export default function ContactModal({ isOpen = true, onClose, serviceContext }: ContactModalProps) {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
     country: '',
-    message: '',
+    message: serviceContext ? `Interesado en: ${serviceContext}\n\n` : '',
   });
   
   const [errors, setErrors] = useState<FormErrors>({});
@@ -183,7 +185,10 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
     >
       <div 
         className={modalContent}
+        style={{ position: 'relative' }}
       >
+        {isSubmitting && <LoadingSpinner message="Enviando tu mensaje..." />}
+        
         <button className={closeButton} onClick={onClose} type="button">×</button>
         <h2 className={title}>Hablemos</h2>
         <p className={subtitle}>

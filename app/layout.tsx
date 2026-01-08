@@ -15,6 +15,7 @@ export const metadata: Metadata = {
   },
   description: 'Más de 10 años construyendo sistemas seguros, tiendas online efectivas y soluciones tecnológicas. Arquitectura, desarrollo y consultoría de alto nivel para empresas.',
   keywords: [
+    'jaime combita',
     'desarrollo web',
     'consultoría tecnológica',
     'arquitectura de software',

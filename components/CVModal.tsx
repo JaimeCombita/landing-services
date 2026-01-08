@@ -34,7 +34,7 @@ export default function CVModal({ isOpen, onClose }: CVModalProps) {
     <div className={modalOverlay} onClick={onClose}>
       <div className={modalContent} onClick={(e) => e.stopPropagation()}>
         <button className={closeButton} onClick={onClose}>×</button>
-        <h2 className={title}>Ver CV</h2>
+        <h2 className={title}>Ver Hoja de vida / CV</h2>
         <p className={subtitle}>
           Selecciona el idioma en el que deseas ver mi experiencia profesional
         </p>
