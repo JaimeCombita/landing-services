@@ -12,6 +12,42 @@ export const timelineSection = style({
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
+  '@media': {
+    'screen and (max-width: 768px)': {
+      padding: '60px 24px',
+    },
+  },
+});
+
+export const sectionTitle = style({
+  fontFamily: vars.font.heading,
+  fontSize: '40px',
+  fontWeight: vars.font.weight.bold,
+  color: '#1A1A1A',
+  textAlign: 'center',
+  marginBottom: '16px',
+  '@media': {
+    'screen and (max-width: 768px)': {
+      fontSize: '28px',
+      marginBottom: '12px',
+    },
+  },
+});
+
+export const sectionSubtitle = style({
+  fontFamily: vars.font.body,
+  fontSize: '18px',
+  color: '#555',
+  textAlign: 'center',
+  maxWidth: '720px',
+  margin: '0 auto 48px',
+  lineHeight: 1.6,
+  '@media': {
+    'screen and (max-width: 768px)': {
+      fontSize: '16px',
+      marginBottom: '32px',
+    },
+  },
 });
 
 export const timeline = style({

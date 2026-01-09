@@ -60,14 +60,14 @@ export const sectionSubtitle = style({
 
 export const techGrid = style({
   display: 'grid',
-  gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))',
-  gap: '40px',
+  gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))',
+  gap: '24px',
   width: '100%',
-  justifyItems: 'center',
+  maxWidth: '1200px',
   '@media': {
     'screen and (max-width: 768px)': {
-      gridTemplateColumns: 'repeat(auto-fit, minmax(100px, 1fr))',
-      gap: '24px',
+      gridTemplateColumns: 'repeat(2, 1fr)',
+      gap: '16px',
     },
   },
 });
@@ -76,8 +76,10 @@ export const techItem = style({
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
+  justifyContent: 'center',
   gap: '12px',
-  padding: '24px',
+  padding: '24px 16px',
+  minHeight: '140px',
   borderRadius: '16px',
   backgroundColor: '#F9FAFB',
   transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
@@ -108,11 +110,16 @@ export const techIcon = style({
 
 export const techLabel = style({
   fontFamily: vars.font.body,
-  fontSize: '14px',
+  fontSize: '13px',
   color: '#666',
   textAlign: 'center',
   fontWeight: vars.font.weight.medium,
   transition: 'all 0.3s ease',
+  lineHeight: 1.3,
+  minHeight: '32px',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
   selectors: {
     [`${techItem}:hover &`]: {
       color: '#1E90FF',

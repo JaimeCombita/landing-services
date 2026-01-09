@@ -35,15 +35,17 @@ const lineGrow = keyframes({
 
 export const workflowSection = style({
   backgroundColor: '#F4F6F8',
-  padding: '120px',
+  padding: '120px 40px',
   margin: '0 auto',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
   gap: '48px',
+  width: '100%',
+  overflow: 'visible',
   '@media': {
     'screen and (max-width: 768px)': {
-      padding: '60px 24px',
+      padding: '60px 20px',
     },
   },
 });
@@ -71,49 +73,25 @@ export const sectionSubtitle = style({
 });
 
 export const timelineContainer = style({
-  display: 'flex',
-  flexDirection: 'row',
-  alignItems: 'flex-start',
-  justifyContent: 'center',
-  gap: '0',
-  maxWidth: '1000px',
+  display: 'grid',
+  gridTemplateColumns: 'repeat(4, 1fr)',
+  gap: '32px',
+  maxWidth: '1300px',
   width: '100%',
   marginTop: '40px',
   position: 'relative',
-  overflowX: 'auto',
-  paddingBottom: '48px',
+  paddingBottom: '20px',
   paddingTop: '24px',
-  '::-webkit-scrollbar': {
-    height: '8px',
-    background: '#F4F6F8',
-  },
-  '::-webkit-scrollbar-thumb': {
-    background: '#1E90FF',
-    borderRadius: '4px',
-  },
-  selectors: {
-    '&::before, &::after': {
-      content: "''",
-      display: 'block',
-      flex: '0 0 60px',
-      height: '1px',
-      background: 'transparent',
-    },
-    '&::before': {
-      marginRight: '0',
-    },
-    '&::after': {
-      marginLeft: '0',
-    },
-  },
   '@media': {
-    'screen and (max-width: 900px)': {
-      maxWidth: '100vw',
-      selectors: {
-        '&::before, &::after': {
-          flex: '0 0 24px',
-        },
-      },
+    'screen and (max-width: 1200px)': {
+      gridTemplateColumns: 'repeat(2, 1fr)',
+      gap: '24px',
+    },
+    'screen and (max-width: 768px)': {
+      gridTemplateColumns: '1fr',
+      gap: '32px',
+      paddingLeft: '0',
+      paddingRight: '0',
     },
   },
 });
@@ -122,34 +100,12 @@ export const stepItem = style({
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-  minWidth: '220px',
-  maxWidth: '260px',
-  flex: '1 1 220px',
+  width: '100%',
   position: 'relative',
-  margin: '0 24px',
   animation: `${fadeInLeft} 0.8s ease-out backwards`,
-  overflow: 'visible',
-  selectors: {
-    '&:first-child': {
-      marginLeft: '100px',
-    },
-    '&:last-child': {
-      marginRight: '100px',
-    },
-  },
   '@media': {
-    'screen and (max-width: 900px)': {
-      minWidth: '180px',
-      maxWidth: '220px',
-      margin: '0 12px',
-      selectors: {
-        '&:first-child': {
-          marginLeft: '6px',
-        },
-        '&:last-child': {
-          marginRight: '6px',
-        },
-      },
+    'screen and (max-width: 768px)': {
+      maxWidth: '100%',
     },
   },
 });
@@ -194,53 +150,56 @@ export const stepNumber = style({
 export const stepLine = style({
   position: 'absolute',
   top: '35px',
-  left: '100%',
-  width: '60px',
-  height: '4px',
+  right: '-48px',
+  width: '40px',
+  height: '3px',
   backgroundColor: '#1E90FF',
   zIndex: 1,
-  animation: `${lineGrow} 0.8s ease-out`,
+  display: 'none',
   '@media': {
-    'screen and (max-width: 900px)': {
-      width: '36px',
+    'screen and (min-width: 1200px)': {
+      display: 'block',
     },
   },
   selectors: {
     '&::after': {
-      content: '',
+      content: "''",
       position: 'absolute',
-      left: 0,
-      top: '-2px',
-      width: '100%',
-      height: '8px',
-      backgroundColor: '#00D1FF',
-      opacity: 0.3,
-      filter: 'blur(4px)',
+      right: '-8px',
+      top: '50%',
+      transform: 'translateY(-50%)',
+      width: '0',
+      height: '0',
+      borderLeft: '10px solid #1E90FF',
+      borderTop: '6px solid transparent',
+      borderBottom: '6px solid transparent',
     },
   },
 });
 
 export const stepContent = style({
   backgroundColor: '#FFFFFF',
-  borderRadius: '28px',
-  padding: '24px 18px',
+  borderRadius: '16px',
+  padding: '32px 24px 36px',
   boxShadow: '0 4px 16px rgba(0,0,0,0.06)',
   transition: 'all 0.3s ease',
-  minHeight: '120px',
+  height: '220px',
   width: '100%',
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'flex-start',
   marginTop: '0',
+  '@media': {
+    'screen and (max-width: 768px)': {
+      height: 'auto',
+      minHeight: '180px',
+      padding: '28px 20px 32px',
+    },
+  },
   selectors: {
     [`${stepItem}:hover &`]: {
       transform: 'translateY(-6px)',
       boxShadow: '0 12px 32px rgba(30, 144, 255, 0.15)',
-    },
-    [`${stepItem}:first-child &`]: {
-      borderTopLeftRadius: '32px',
-      borderTopRightRadius: '32px',
-    },
-    [`${stepItem}:last-child &`]: {
-      borderBottomLeftRadius: '32px',
-      borderBottomRightRadius: '32px',
     },
   },
 });
