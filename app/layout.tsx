@@ -64,8 +64,17 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Jaime Combita - Soluciones Digitales y Consultoría Tech',
     description: 'Más de 10 años construyendo sistemas seguros, tiendas online efectivas y soluciones tecnológicas.',
-    images: ['/og-image.jpg'],
+    images: ['/oe-image.jpg'],
     creator: '@combita_jaime',
+  },
+  icons: {
+    icon: [
+      { url: '/logo.png', sizes: '512x512', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/logo.png', sizes: '512x512', type: 'image/png' },
+    ],
+    shortcut: '/logo.png',
   },
   verification: {
     google: '-YVFBmqpYDeWZbFn7YPybBV8cwEtiEoFaadZhRMkUKM',
