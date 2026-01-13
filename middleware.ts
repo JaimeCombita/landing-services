@@ -4,8 +4,9 @@ import type { NextRequest } from 'next/server';
 export function middleware(request: NextRequest) {
   const hostname = request.headers.get('host') || '';
   
-  // Redirigir desde vercel.app y www a dominio principal
-  if (hostname.includes('vercel.app') || hostname.startsWith('www.')) {
+  // Solo redirigir desde dominios vercel.app al dominio principal
+  // La redirección de www → jcengine.co se maneja en Vercel Settings → Domains
+  if (hostname.includes('vercel.app')) {
     const url = request.nextUrl.clone();
     url.host = 'jcengine.co';
     url.protocol = 'https';
