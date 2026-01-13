@@ -8,10 +8,24 @@ import ServiceCTA from '@/components/service-detail/ServiceCTA';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ContactModal from '@/components/ContactModal';
+import StructuredData from '@/components/StructuredData';
+import { serviceSchema, breadcrumbSchema } from '@/lib/structured-data';
 import { Cog6ToothIcon } from '@heroicons/react/24/outline';
 
 export default function AplicacionesMedidaPage() {
   const [showModal, setShowModal] = useState(false);
+  
+  const serviceData = serviceSchema({
+    name: 'Aplicaciones a Medida',
+    description: 'Software personalizado que resuelve tus desafíos específicos. Desde APIs hasta sistemas empresariales complejos con arquitectura escalable.',
+    url: 'https://jcengine.co/servicios/aplicaciones-medida',
+  });
+  
+  const breadcrumbData = breadcrumbSchema([
+    { name: 'Inicio', url: 'https://jcengine.co' },
+    { name: 'Servicios', url: 'https://jcengine.co/#services' },
+    { name: 'Aplicaciones a Medida', url: 'https://jcengine.co/servicios/aplicaciones-medida' },
+  ]);
   const features = [
     {
       title: 'Arquitectura Escalable',
@@ -84,6 +98,7 @@ export default function AplicacionesMedidaPage() {
 
   return (
     <>
+      <StructuredData data={[serviceData, breadcrumbData]} />
       <Navbar onContactClick={() => setShowModal(true)} />
       <ServiceHero
         title="Aplicaciones a Medida"

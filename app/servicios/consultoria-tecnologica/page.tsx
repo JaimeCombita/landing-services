@@ -8,10 +8,24 @@ import ServiceCTA from '@/components/service-detail/ServiceCTA';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ContactModal from '@/components/ContactModal';
+import StructuredData from '@/components/StructuredData';
+import { serviceSchema, breadcrumbSchema } from '@/lib/structured-data';
 import { LightBulbIcon } from '@heroicons/react/24/outline';
 
 export default function ConsultoriaTecnologicaPage() {
   const [showModal, setShowModal] = useState(false);
+  
+  const serviceData = serviceSchema({
+    name: 'Consultoría Tecnológica',
+    description: 'Asesoría estratégica para optimizar tu infraestructura tecnológica. Mejora seguridad, rendimiento y escalabilidad con decisiones informadas.',
+    url: 'https://jcengine.co/servicios/consultoria-tecnologica',
+  });
+  
+  const breadcrumbData = breadcrumbSchema([
+    { name: 'Inicio', url: 'https://jcengine.co' },
+    { name: 'Servicios', url: 'https://jcengine.co/#services' },
+    { name: 'Consultoría Tecnológica', url: 'https://jcengine.co/servicios/consultoria-tecnologica' },
+  ]);
   const features = [
     {
       title: 'Auditoría de Código',
@@ -84,6 +98,7 @@ export default function ConsultoriaTecnologicaPage() {
 
   return (
     <>
+      <StructuredData data={[serviceData, breadcrumbData]} />
       <Navbar onContactClick={() => setShowModal(true)} />
       <ServiceHero
         title="Consultoría Tecnológica"

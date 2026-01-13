@@ -8,10 +8,25 @@ import ServiceCTA from '@/components/service-detail/ServiceCTA';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ContactModal from '@/components/ContactModal';
+import StructuredData from '@/components/StructuredData';
+import { serviceSchema, breadcrumbSchema } from '@/lib/structured-data';
 import { CodeBracketIcon } from '@heroicons/react/24/outline';
 
 export default function DesarrolloWebPage() {
   const [showModal, setShowModal] = useState(false);
+  
+  const serviceData = serviceSchema({
+    name: 'Desarrollo Web Profesional',
+    description: 'Diseño y desarrollo de sitios web modernos, rápidos y optimizados para SEO. Landing pages, sitios corporativos y aplicaciones web.',
+    url: 'https://jcengine.co/servicios/desarrollo-web',
+  });
+  
+  const breadcrumbData = breadcrumbSchema([
+    { name: 'Inicio', url: 'https://jcengine.co' },
+    { name: 'Servicios', url: 'https://jcengine.co/#services' },
+    { name: 'Desarrollo Web', url: 'https://jcengine.co/servicios/desarrollo-web' },
+  ]);
+  
   const features = [
     {
       title: 'Diseño Responsive',
@@ -87,6 +102,7 @@ export default function DesarrolloWebPage() {
 
   return (
     <>
+      <StructuredData data={[serviceData, breadcrumbData]} />
       <Navbar onContactClick={() => setShowModal(true)} />
       <ServiceHero
         title="Desarrollo Web"

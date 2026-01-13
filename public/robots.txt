@@ -1,0 +1,29 @@
+# Robots.txt para JC Engine
+# https://jcengine.co
+
+# Permitir todos los bots
+User-agent: *
+Allow: /
+
+# Optimización para bots de búsqueda
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 0
+
+# Bloquear acceso a archivos y carpetas sensibles
+Disallow: /api/
+Disallow: /_next/static/
+Disallow: /*.json$
+
+# Permitir explícitamente páginas de servicios
+Allow: /servicios/
+
+# Sitemap
+Sitemap: https://jcengine.co/sitemap.xml
+
+# Información adicional
+# Host: https://jcengine.co

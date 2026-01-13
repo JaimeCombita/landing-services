@@ -8,10 +8,24 @@ import ServiceCTA from '@/components/service-detail/ServiceCTA';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ContactModal from '@/components/ContactModal';
+import StructuredData from '@/components/StructuredData';
+import { serviceSchema, breadcrumbSchema } from '@/lib/structured-data';
 import { ShoppingCartIcon } from '@heroicons/react/24/outline';
 
 export default function EcommercePage() {
   const [showModal, setShowModal] = useState(false);
+  
+  const serviceData = serviceSchema({
+    name: 'Soluciones E-commerce',
+    description: 'Tiendas online completas que venden 24/7. Configuración de plataformas, desarrollo custom e integraciones con redes sociales y pasarelas de pago.',
+    url: 'https://jcengine.co/servicios/ecommerce',
+  });
+  
+  const breadcrumbData = breadcrumbSchema([
+    { name: 'Inicio', url: 'https://jcengine.co' },
+    { name: 'Servicios', url: 'https://jcengine.co/#services' },
+    { name: 'E-commerce', url: 'https://jcengine.co/servicios/ecommerce' },
+  ]);
   const features = [
     {
       title: 'Plataforma a tu Medida',
@@ -86,6 +100,7 @@ export default function EcommercePage() {
 
   return (
     <>
+      <StructuredData data={[serviceData, breadcrumbData]} />
       <Navbar onContactClick={() => setShowModal(true)} />
       <ServiceHero
         title="Soluciones E-commerce"

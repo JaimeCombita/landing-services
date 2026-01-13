@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Poppins } from 'next/font/google';
 import "./globals.css";
+import GoogleAnalytics from '@/components/GoogleAnalytics';
+import StructuredData from '@/components/StructuredData';
+import { organizationSchema, websiteSchema, personSchema, professionalServiceSchema } from '@/lib/structured-data';
 
 const poppins = Poppins({ 
   subsets: ['latin'], 
@@ -99,6 +102,17 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className={poppins.variable} suppressHydrationWarning>
+        {process.env.NEXT_PUBLIC_GA_ID && (
+          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
+        )}
+        <StructuredData 
+          data={[
+            organizationSchema,
+            websiteSchema,
+            personSchema,
+            professionalServiceSchema
+          ]} 
+        />
         {children}
       </body>
     </html>
