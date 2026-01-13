@@ -17,7 +17,7 @@ export default function HeroVisual() {
       <div className={`${particle} ${particle2}`} />
       <div className={`${particle} ${particle3}`} />
       <Image
-        src="/hero-visual.png"
+        src="/logonew.png"
         alt="Composición visual de soluciones digitales"
         width={650}
         height={600}

@@ -10,12 +10,13 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Jaime Combita - Soluciones Digitales y Consultoría Tech',
+    default: 'JC Engine - Soluciones Digitales y Consultoría Tech',
     template: '%s | Jaime Combita'
   },
   description: 'Más de 10 años construyendo sistemas seguros, tiendas online efectivas y soluciones tecnológicas. Arquitectura, desarrollo y consultoría de alto nivel para empresas.',
   keywords: [
     'jaime combita',
+    'jc engine',
     'desarrollo web',
     'consultoría tecnológica',
     'arquitectura de software',
@@ -27,6 +28,8 @@ export const metadata: Metadata = {
     'Next.js',
     'React',
     'Node.js',
+    'java',
+    'spring boot',
     'Colombia',
   ],
   authors: [{ name: 'Jaime Combita' }],
@@ -48,33 +51,36 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'es_CO',
     url: 'https://jaime-combita-landing.vercel.app/',
-    title: 'Jaime Combita - Soluciones Digitales y Consultoría Tech',
+    title: 'JC Engine - Soluciones Digitales y Consultoría Tech',
     description: 'Más de 10 años construyendo sistemas seguros, tiendas online efectivas y soluciones tecnológicas alineadas a objetivos de negocio.',
-    siteName: 'Jaime Combita',
+    siteName: 'JC Engine',
     images: [
       {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Jaime Combita - Soluciones Digitales',
+        alt: 'JC Engine - Soluciones Digitales',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Jaime Combita - Soluciones Digitales y Consultoría Tech',
+    title: 'JC Engine - Soluciones Digitales y Consultoría Tech',
     description: 'Más de 10 años construyendo sistemas seguros, tiendas online efectivas y soluciones tecnológicas.',
     images: ['/oe-image.jpg'],
     creator: '@combita_jaime',
   },
   icons: {
     icon: [
+      { url: '/favicon.ico', sizes: '32x32' },
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
       { url: '/logo.png', sizes: '512x512', type: 'image/png' },
     ],
     apple: [
-      { url: '/logo.png', sizes: '512x512', type: 'image/png' },
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
     ],
-    shortcut: '/logo.png',
+    shortcut: '/favicon.ico',
   },
   verification: {
     google: '-YVFBmqpYDeWZbFn7YPybBV8cwEtiEoFaadZhRMkUKM',
