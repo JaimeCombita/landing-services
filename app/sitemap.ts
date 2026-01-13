@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://jaime-combita-landing.vercel.app';
+  const baseUrl = 'https://jcengine.co';
   
   return [
     {

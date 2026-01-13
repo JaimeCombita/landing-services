@@ -46,11 +46,11 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  metadataBase: new URL('https://jaime-combita-landing.vercel.app/'),
+  metadataBase: new URL('https://jcengine.co/'),
   openGraph: {
     type: 'website',
     locale: 'es_CO',
-    url: 'https://jaime-combita-landing.vercel.app/',
+    url: 'https://jcengine.co/',
     title: 'JC Engine - Soluciones Digitales y Consultoría Tech',
     description: 'Más de 10 años construyendo sistemas seguros, tiendas online efectivas y soluciones tecnológicas alineadas a objetivos de negocio.',
     siteName: 'JC Engine',
@@ -86,7 +86,7 @@ export const metadata: Metadata = {
     google: '-YVFBmqpYDeWZbFn7YPybBV8cwEtiEoFaadZhRMkUKM',
   },
   alternates: {
-    canonical: 'https://jaime-combita-landing.vercel.app/',
+    canonical: 'https://jcengine.co/',
   },
   category: 'technology',
 };
