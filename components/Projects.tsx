@@ -163,7 +163,7 @@ export default function Projects() {
             </div>
           </div>
         </div>
-        {/* Proyecto 5: Generador de Carnets */}
+        {/* Proyecto 5: Generador de Carnets*/}
         <div className={timelineItem}>
 
           <Image
