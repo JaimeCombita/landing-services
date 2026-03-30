@@ -21,6 +21,7 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
     const { name, email, phone, country, message } = body;
+    const siteOrigin = new URL(request.url).origin;
 
     if (!name || !email || !phone || !country || !message) {
       return NextResponse.json(
@@ -55,7 +56,7 @@ export async function POST(request: Request) {
       from: 'Formulario Landing <onboarding@resend.dev>',
       to: ['leonardo.102408@gmail.com'],
       subject: generateContactEmailSubject(name),
-      html: generateContactEmailHTML({ name, email, phone, country, message }),
+      html: generateContactEmailHTML({ name, email, phone, country, message, siteOrigin }),
       replyTo: email,
     });
 

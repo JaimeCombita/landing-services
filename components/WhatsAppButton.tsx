@@ -3,7 +3,7 @@
 import { whatsappButton, whatsappIcon } from '@/styles/components/whatsapp.css';
 
 export default function WhatsAppButton() {
-  const phoneNumber = '573142609413'; // Código de país + número
+  const phoneNumber = '573219341908';
   const message = encodeURIComponent(
     '¡Hola! 👋 Me interesa conocer más sobre tus servicios de desarrollo de software y soluciones digitales. ¿Podrías brindarme más información?'
   );

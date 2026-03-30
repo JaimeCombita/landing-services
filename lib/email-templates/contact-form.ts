@@ -4,10 +4,14 @@ interface ContactEmailData {
   phone: string;
   country: string;
   message: string;
+  siteOrigin?: string;
 }
 
 export function generateContactEmailHTML(data: ContactEmailData): string {
-  const { name, email, phone, country, message } = data;
+  const { name, email, phone, country, message, siteOrigin } = data;
+  const normalizedPhone = phone.replace(/\D/g, '');
+  const whatsappLink = normalizedPhone ? `https://wa.me/${normalizedPhone}` : '';
+  const logoUrl = siteOrigin ? `${siteOrigin}/logo.png` : '';
   
   return `
     <!DOCTYPE html>
@@ -30,6 +34,13 @@ export function generateContactEmailHTML(data: ContactEmailData): string {
             color: white;
             padding: 20px;
             border-radius: 8px 8px 0 0;
+            text-align: center;
+          }
+          .header-logo {
+            display: block;
+            margin: 0 auto 12px;
+            max-width: 72px;
+            height: auto;
           }
           .content {
             background: white;
@@ -60,11 +71,19 @@ export function generateContactEmailHTML(data: ContactEmailData): string {
             border-left: 4px solid #1E90FF;
             border-radius: 4px;
           }
+          .whatsapp-link {
+            display: inline-block;
+            margin-top: 8px;
+            color: #128C7E;
+            text-decoration: none;
+            font-weight: bold;
+          }
         </style>
       </head>
       <body>
         <div class="container">
           <div class="header">
+            ${logoUrl ? `<img src="${logoUrl}" alt="Logo JC Engine" class="header-logo" />` : ''}
             <h2 style="margin: 0;">📧 Nuevo Mensaje desde tu Landing</h2>
           </div>
           <div class="content">
@@ -79,6 +98,7 @@ export function generateContactEmailHTML(data: ContactEmailData): string {
             <div class="field">
               <span class="label">📱 Teléfono:</span>
               <span class="value">${phone}</span>
+              ${whatsappLink ? `<br/><a href="${whatsappLink}" target="_blank" rel="noopener noreferrer" class="whatsapp-link">Abrir chat en WhatsApp</a>` : ''}
             </div>
             <div class="field">
               <span class="label">🌍 País:</span>

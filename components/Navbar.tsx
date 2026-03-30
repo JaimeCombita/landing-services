@@ -40,12 +40,12 @@ export default function Navbar({ onContactClick }: NavbarProps) {
         <div className={logoContainer}>
           <Image
             src="/logo.png"
-            alt="Logo Jaime Combita"
+            alt="Logo JC Engine by Jaime Combita"
             width={60}
             height={60}
             className={logo}
           />
-          <span className={logoText}>Jaime Combita</span>
+          <span className={logoText}>JC Engine by Jaime Combita</span>
         </div>
         
         {/* Desktop Menu */}

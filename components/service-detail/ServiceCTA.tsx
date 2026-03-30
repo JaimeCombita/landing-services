@@ -21,7 +21,7 @@ export default function ServiceCTA({ serviceName }: ServiceCTAProps) {
 
   const handleWhatsApp = () => {
     const message = `Hola, estoy interesado en el servicio de ${serviceName}`;
-    const phoneNumber = '59170925149'; // Actualiza con tu número
+    const phoneNumber = '573219341908';
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
